@@ -6,18 +6,24 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:41:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/01 19:10:15 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:02:15 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# define BLUE "\033[1;34m"
+# define CYAN "\033[1;36m"
 # define GREEN "\033[1;32m"
+# define RED "\033[1;31m"
 # define RESET "\033[0m"
 
 # include <iostream>
+# include <string>
+# include <exception>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
     private:
@@ -25,19 +31,17 @@ class Bureaucrat {
         int _grade;
     public:
         Bureaucrat();
-        Bureaucrat(const std::string &name);
-        Bureaucrat(int grade);
         Bureaucrat(const std::string &name, int grade);
         Bureaucrat(const Bureaucrat &ref);
         Bureaucrat &operator=(const Bureaucrat &ref);
         ~Bureaucrat();
         
         const std::string &getName() const;
-        int setGrade(int grade);
         int getGrade() const;
         void incrementGrade();
         void decrementGrade();
-        
+        void signForm(Form &ref);
+    
     class GradeTooHighException : public std::exception {
         public:
             virtual const char *what() const throw();
@@ -48,5 +52,6 @@ class Bureaucrat {
     };
 };
 
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &ref);
 
 #endif
