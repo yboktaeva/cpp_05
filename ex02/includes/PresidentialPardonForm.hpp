@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:57:49 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/04 18:27:53 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:50:39 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PRESIDENTIALPARDONFORM_HPP
 
 # include "AForm.hpp"
+# include "Bureaucrat.hpp"
 
 class PresidentialPardonForm : public AForm {
     private:
@@ -25,7 +26,7 @@ class PresidentialPardonForm : public AForm {
         PresidentialPardonForm &operator=(const PresidentialPardonForm &ref);
         ~PresidentialPardonForm();
 
-        void execute(Bureaucrat const &executor) const;
+        virtual void execute(Bureaucrat const &executor) const;
 };
 
 #endif

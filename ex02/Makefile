@@ -6,7 +6,7 @@
 #    By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 17:41:18 by yuboktae          #+#    #+#              #
-#    Updated: 2023/12/04 18:04:27 by yuboktae         ###   ########.fr        #
+#    Updated: 2023/12/05 15:24:38 by yuboktae         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 INC_DIR = includes/
 
-SRC_FILES	= main.cpp Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp\
-			RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
+SRC_FILES	= main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp\
+			RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SRC))

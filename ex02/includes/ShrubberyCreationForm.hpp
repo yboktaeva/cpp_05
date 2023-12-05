@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:55:54 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/04 18:28:05 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/05 15:50:46 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include "AForm.hpp"
+# include "Bureaucrat.hpp"
 
 class ShrubberyCreationForm : public AForm {
     private:
@@ -25,7 +26,7 @@ class ShrubberyCreationForm : public AForm {
         ShrubberyCreationForm &operator=(const ShrubberyCreationForm &ref);
         ~ShrubberyCreationForm();
 
-        void execute(Bureaucrat const &executor) const;
+        virtual void execute(Bureaucrat const &executor) const;
 };
 
 #endif

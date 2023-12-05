@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:40:46 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/04 17:07:30 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:48:37 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,10 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &ref) {
 }
 
 void Bureaucrat::signForm(Form &ref) {
-    ref.beSigned(*this);
-    if (ref.getSigned() == false)
+    if (!ref.getSigned() && this->getGrade() > ref.getSignGrade())
         std::cout << RED << this->getName() << " cannot sign " << ref.getName() << " because " << this->getName() << "'s grade is too low" << RESET << std::endl;
-    else
+    else if (!ref.getSigned())
         std::cout << GREEN << this->getName() << " signed " << ref.getName() << RESET << std::endl;
+    else
+        ref.beSigned(*this);
 }

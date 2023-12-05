@@ -6,19 +6,19 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:40:46 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/04 18:24:26 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:48:19 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {
-    std::cout << CYAN << "Bureaucrat Default constructor called for " << this->getName() <<
+    std::cout << MAGENTA << "Bureaucrat Default constructor called for " << this->getName() <<
     " with grade of " << this->getGrade() << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade(grade) {
-    std::cout << CYAN << "Bureaucrat Constructor called for " << this->getName() <<
+    std::cout << MAGENTA << "Bureaucrat Constructor called for " << this->getName() <<
     " with grade of " << this->getGrade() << RESET << std::endl;
     if (this->_grade < 1)
         throw Bureaucrat::GradeTooHighException();
@@ -27,13 +27,13 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &ref) : _name(ref.getName() + "_copy") {
-    std::cout << CYAN << "Bureaucrat Copy constructor called to copy " << ref.getName() <<
+    std::cout << MAGENTA << "Bureaucrat Copy constructor called to copy " << ref.getName() <<
     " to " << this->getName() << RESET << std::endl;
     *this = ref;
 }
 
 Bureaucrat::~Bureaucrat() {
-    std::cout << CYAN << "Bureaucrat Destructor called for " << this->getName() <<
+    std::cout << MAGENTA << "Bureaucrat Destructor called for " << this->getName() <<
         RESET << std::endl;
 }
 
@@ -77,12 +77,16 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &ref) {
     return out;
 }
 
-void Bureaucrat::signForm(Form &ref) {
-    ref.beSigned(*this);
-    if (ref.getSigned() == false)
+void Bureaucrat::signForm(AForm &ref) {
+    if (!ref.getSigned() && this->getGrade() > ref.getSignGrade())
         std::cout << RED << this->getName() << " cannot sign " << ref.getName() << " because " << this->getName() << "'s grade is too low" << RESET << std::endl;
-    else
+    else if (!ref.getSigned())
+    {
         std::cout << GREEN << this->getName() << " signed " << ref.getName() << RESET << std::endl;
+        ref.beSigned(*this);
+    }
+    else
+        ref.beSigned(*this);
 }
 
 void Bureaucrat::executeForm(AForm const &form) const {

@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 19:23:28 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/04 17:51:34 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:04:27 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,12 @@ class Form {
         int getSignGrade() const;
         int getExecGrade() const;
         void beSigned(Bureaucrat &ref);
-        
+    
+    class NotSignedException : public std::exception {
+        public:
+            virtual const char *what() const throw();
+    };
+    
     class GradeTooHighException : public std::exception {
         public:
             virtual const char *what() const throw();

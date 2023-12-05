@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:47:13 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/04 18:21:29 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:56:23 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@
 # define GREEN "\033[1;32m"
 # define RED "\033[1;31m"
 # define RESET "\033[0m"
+# define YELLOW "\033[1;33m"
 
 # include <iostream>
 # include <string>
 # include <exception>
+# include <fstream>
+# include <cstdlib>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -43,12 +46,18 @@ class AForm {
         int getSignGrade() const;
         int getExecGrade() const;
         void beSigned(Bureaucrat &ref);
-        virtual void execute(Bureaucrat const &executor) const;
+        virtual void execute(Bureaucrat const &executor) const = 0;
+    
+    class NotSignedException : public std::exception {
+        public:
+            virtual const char *what() const throw();
+    };
         
     class GradeTooHighException : public std::exception {
         public:
             virtual const char *what() const throw();
     };
+    
     class GradeTooLowException : public std::exception {
         public:
             virtual const char *what() const throw();

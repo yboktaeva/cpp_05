@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:55:56 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/04 17:34:11 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:46:46 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ int main() {
         Form f1("Form1", false, 2, 2);
         b2.incrementGrade();
         std::cout << GREEN << b2 << RESET <<std::endl;
-        b2.decrementGrade();
-        std::cout << GREEN << b2 << RESET << std::endl;
         b2.signForm(f1);
+        f1.beSigned(b2);
     }
     catch (std::exception &e) {
         std::cout << RED << e.what() << RESET << std::endl;
@@ -57,6 +56,8 @@ int main() {
         Form f2("Form2", false, 100, 100);
         b4.incrementGrade();
         std::cout << GREEN << b4 << RESET << std::endl;
+        b4.signForm(f2);
+        f2.beSigned(b4);
         b4.signForm(f2);
     }
     catch (std::exception &e) {

@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:41:53 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/04 18:23:22 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:15:47 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BUREAUCRAT_HPP
 
 # define CYAN "\033[1;36m"
+# define MAGENTA "\033[1;35m"
 # define GREEN "\033[1;32m"
 # define RED "\033[1;31m"
 # define RESET "\033[0m"

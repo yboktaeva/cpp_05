@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    PresidentialPardonForm.cpp                        :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 18:03:41 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/04 18:32:14 by yuboktae         ###   ########.fr       */
+/*   Created: 2023/12/05 15:32:59 by yuboktae          #+#    #+#             */
+/*   Updated: 2023/12/05 17:59:14 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 PresidentialPardonForm::~PresidentialPardonForm() {
     std::cout << CYAN << "PresidentialPardonForm destructor called for " 
     << this->getName() << RESET << std::endl;
+}
+
+void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
+    if (!this->getSigned())
+        throw AForm::NotSignedException();
+    if (executor.getGrade() > this->getExecGrade())
+        throw AForm::GradeTooLowException();
+    std::cout << YELLOW << this->_target << " has been pardoned by Zafod Beeblebrox" << RESET << std::endl;
 }

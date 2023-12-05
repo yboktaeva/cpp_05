@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/05 15:14:25 by yuboktae          #+#    #+#             */
+/*   Updated: 2023/12/05 17:39:08 by yuboktae         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "AForm.hpp"
 
@@ -50,6 +61,10 @@ int AForm::getExecGrade() const {
     return this->_execGrade;
 }
 
+const char *AForm::NotSignedException::what() const throw() {
+    return "AForm is not signed";
+}
+
 const char *AForm::GradeTooHighException::what() const throw() {
     return "AForm Grade is too high";
 }
@@ -70,7 +85,7 @@ std::ostream &operator<<(std::ostream &out, const AForm &ref) {
 void AForm::beSigned(Bureaucrat &ref) {
     if (ref.getGrade() > this->getSignGrade())
         throw Bureaucrat::GradeTooLowException();
-    else if (this->getSigned() == false) {
+    if (!this->getSigned()) {
         std::cout << GREEN << "AForm " << this->getName() << " was signed by "<< ref.getName() << RESET << std::endl;
         this->_signed = true;
     }
