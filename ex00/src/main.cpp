@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:55:56 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/06 14:14:42 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:35:29 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int main() {
         std::cout << GREEN << b << RESET <<std::endl;
         b.decrementGrade();
         std::cout << GREEN << b << RESET << std::endl;
-
     }
     catch (std::exception &e) {
         std::cout << RED << e.what() << RESET << std::endl;

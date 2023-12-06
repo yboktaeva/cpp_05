@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:55:56 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/06 14:14:54 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:35:55 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int main() {
     std::cout << "__________________________________________" << std::endl;
     
     try {
-        
         Bureaucrat b5("Clerk#1", 42);
         Form f3("Form3", false, 42, 42);
         std::cout << GREEN << f3 << RESET << std::endl;
