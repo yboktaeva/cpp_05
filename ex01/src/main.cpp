@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:55:56 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/05 14:46:46 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:14:54 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,5 @@ int main() {
     catch (std::exception &e) {
         std::cout << RED << e.what() << RESET << std::endl;
     }
+    return 0;
 }
