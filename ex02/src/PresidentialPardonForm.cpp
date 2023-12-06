@@ -6,18 +6,18 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 15:32:59 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/05 17:59:14 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/06 19:57:30 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", false, 25, 5) {
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5) {
     std::cout << CYAN << "PresidentialPardonForm default constructor called for " 
     << this->getName() << RESET << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm("PresidentialPardonForm", false, 25, 5), _target(target) {
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm("PresidentialPardonForm", 25, 5), _target(target) {
     std::cout << CYAN << "PresidentialPardonForm constructor called for " 
     << this->getName() << RESET << std::endl;
 }

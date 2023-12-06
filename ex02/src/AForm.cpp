@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 15:14:25 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/05 17:39:08 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/06 19:47:02 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ AForm::AForm() : _name("default"), _signed(false), _signGrade(150), _execGrade(1
     " with sign grade of " << this->getSignGrade() << " and exec grade of " << this->getExecGrade() << RESET << std::endl;
 }
 
-AForm::AForm(const std::string &name, bool isSigned, int signGrade, int execGrade):
-    _name(name), _signed(isSigned), _signGrade(signGrade), _execGrade(execGrade) {
+AForm::AForm(const std::string &name, int signGrade, int execGrade):
+    _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
     std::cout << CYAN << "AForm Constructor called for " << this->getName() <<
     " with sign grade of " << this->getSignGrade() << " and exec grade of " << this->getExecGrade() << RESET << std::endl;
     if (this->_signGrade < 1 || this->_execGrade < 1)
@@ -65,6 +65,10 @@ const char *AForm::NotSignedException::what() const throw() {
     return "AForm is not signed";
 }
 
+const char *AForm::SignedException::what() const throw() {
+    return "AForm is already signed";
+}
+
 const char *AForm::GradeTooHighException::what() const throw() {
     return "AForm Grade is too high";
 }
@@ -85,10 +89,8 @@ std::ostream &operator<<(std::ostream &out, const AForm &ref) {
 void AForm::beSigned(Bureaucrat &ref) {
     if (ref.getGrade() > this->getSignGrade())
         throw Bureaucrat::GradeTooLowException();
-    if (!this->getSigned()) {
-        std::cout << GREEN << "AForm " << this->getName() << " was signed by "<< ref.getName() << RESET << std::endl;
-        this->_signed = true;
-    }
-    else
-        std::cout << RED << "AForm " << this->getName() << " is already signed" << RESET << std::endl;
+    if (this->getSigned())
+        throw AForm::SignedException();
+    std::cout << GREEN << "AForm " << this->getName() << " was signed by "<< ref.getName() << RESET << std::endl;
+    this->_signed = true;
 }

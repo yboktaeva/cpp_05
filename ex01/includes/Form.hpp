@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 19:23:28 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/05 14:04:27 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/06 19:22:48 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Form {
         const int _execGrade;
     public:
         Form();
-        Form(const std::string &name, bool isSigned, int signGrade, int execGrade);
+        Form(const std::string &name, int signGrade, int execGrade);
         Form(const Form &ref);
         Form &operator=(const Form &ref);
         ~Form();
@@ -45,6 +45,11 @@ class Form {
         void beSigned(Bureaucrat &ref);
     
     class NotSignedException : public std::exception {
+        public:
+            virtual const char *what() const throw();
+    };
+    
+    class SignedException : public std::exception {
         public:
             virtual const char *what() const throw();
     };

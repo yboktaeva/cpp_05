@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:00:58 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/06 14:52:19 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/06 20:14:46 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ class Intern {
         AForm *makePresidentialForm(std::string target);
 
         AForm *makeForm(std::string formName, std::string target);
+        
+        class FormNotFoundException : public std::exception {
+            virtual const char *what() const throw();
+        };
 };
 
 #endif

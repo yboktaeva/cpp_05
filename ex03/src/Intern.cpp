@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:03:25 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/06 14:57:15 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/06 20:20:24 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,20 @@ AForm *Intern::makePresidentialForm(std::string target) {
     return new PresidentialPardonForm(target);
 }
 
+const char *Intern::FormNotFoundException::what() const throw() {
+    return "Intern cannot create Form because of unknown form name";
+}
+
 AForm *Intern::makeForm(std::string formName, std::string target) {
     std::string formNames[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
     AForm *(Intern::*formFuncs[3])(std::string target) = {&Intern::makeShrubberyForm, &Intern::makeRobotomyForm, &Intern::makePresidentialForm};
     for (int i = 0; i < 3; i++) {
         if (formName == formNames[i]) {
-            std::cout << YELLOW << "Intern creates " << formName << RESET << std::endl;
+            std::cout << GREEN << "Intern creates " << formName << RESET << std::endl;
             return (this->*formFuncs[i])(target);
         }
     }
-    std::cout << RED << "Intern can't create " << formName << RESET << std::endl;
+    if (formName != "shrubbery creation" && formName != "robotomy request" && formName != "presidential pardon")
+        throw FormNotFoundException();
     return NULL;
 }

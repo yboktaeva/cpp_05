@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:40:46 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/05 17:48:19 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/06 19:50:25 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,18 @@ char const *Bureaucrat::GradeTooLowException::what() const throw() {
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &ref) {
-    out << ref.getName() << ", bureaucrat grade " << ref.getGrade();
+    out << GREEN << ref.getName() << ", bureaucrat grade " << ref.getGrade() << RESET << std::endl;
     return out;
 }
 
 void Bureaucrat::signForm(AForm &ref) {
-    if (!ref.getSigned() && this->getGrade() > ref.getSignGrade())
-        std::cout << RED << this->getName() << " cannot sign " << ref.getName() << " because " << this->getName() << "'s grade is too low" << RESET << std::endl;
-    else if (!ref.getSigned())
-    {
+    try {
+        ref.beSigned(*this);
         std::cout << GREEN << this->getName() << " signed " << ref.getName() << RESET << std::endl;
-        ref.beSigned(*this);
     }
-    else
-        ref.beSigned(*this);
+    catch (std::exception &e) {
+        std::cout << RED << this->getName() << " cannot sign " << ref.getName() << " because " << e.what() << RESET << std::endl;
+    }
 }
 
 void Bureaucrat::executeForm(AForm const &form) const {
