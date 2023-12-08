@@ -6,7 +6,7 @@
 /*   By: yuboktae <yuboktae@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:03:48 by yuboktae          #+#    #+#             */
-/*   Updated: 2023/12/06 20:00:36 by yuboktae         ###   ########.fr       */
+/*   Updated: 2023/12/08 12:07:04 by yuboktae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 
     << this->getName() << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 25, 5), _target(target) {
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
     std::cout << CYAN << "ShrubberyCreationForm constructor called for " 
     << this->getName() << RESET << std::endl;
 }
